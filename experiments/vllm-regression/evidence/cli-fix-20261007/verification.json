@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "commit": "1e74a69c71604c3c3ec6cc3cce9dbe8b702bfcda",
+  "execution_layer": "full_cli",
+  "attempted": 30,
+  "completed": 15,
+  "failed": 15,
+  "explicit_error_false_successes": 0,
+  "completed_output_tokens": 45,
+  "partial_output_tokens_local": 10,
+  "cases": [
+    {
+      "case": "normal",
+      "attempted": 5,
+      "native_completed": 5,
+      "native_failed": 0,
+      "oracle_outcome": "completed",
+      "explicit_error_false_successes": 0,
+      "total_output_tokens": 15,
+      "peak_choices_events_per_second": 15,
+      "duration_seconds": 0.07287787506356835,
+      "partial_text_exports": [],
+      "association": "input ordinal plus fixture ID; native export has no request IDs",
+      "evidence": {
+        "native": "normal/native.json",
+        "journal": "server_journal.jsonl"
+      }
+    },
+    {
+      "case": "error_only",
+      "attempted": 5,
+      "native_completed": 0,
+      "native_failed": 5,
+      "oracle_outcome": "failed",
+      "explicit_error_false_successes": 0,
+      "total_output_tokens": 0,
+      "peak_choices_events_per_second": 0,
+      "duration_seconds": 0.03125704196281731,
+      "partial_text_exports": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "association": "input ordinal plus fixture ID; native export has no request IDs",
+      "evidence": {
+        "native": "error_only/native.json",
+        "journal": "server_journal.jsonl"
+      },
+      "partial_output_tokens_local": 0,
+      "partial_count_source": "verified local whole-text tokenizer; excluded from completed totals"
+    },
+    {
+      "case": "role_then_error",
+      "attempted": 5,
+      "native_completed": 0,
+      "native_failed": 5,
+      "oracle_outcome": "failed",
+      "explicit_error_false_successes": 0,
+      "total_output_tokens": 0,
+      "peak_choices_events_per_second": 0,
+      "duration_seconds": 0.04388916597235948,
+      "partial_text_exports": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "association": "input ordinal plus fixture ID; native export has no request IDs",
+      "evidence": {
+        "native": "role_then_error/native.json",
+        "journal": "server_journal.jsonl"
+      },
+      "partial_output_tokens_local": 0,
+      "partial_count_source": "verified local whole-text tokenizer; excluded from completed totals"
+    },
+    {
+      "case": "text_then_error",
+      "attempted": 5,
+      "native_completed": 0,
+      "native_failed": 5,
+      "oracle_outcome": "failed",
+      "explicit_error_false_successes": 0,
+      "total_output_tokens": 0,
+      "peak_choices_events_per_second": 0,
+      "duration_seconds": 0.04489079199265689,
+      "partial_text_exports": [
+        "Hello world",
+        "Hello world",
+        "Hello world",
+        "Hello world",
+        "Hello world"
+      ],
+      "association": "input ordinal plus fixture ID; native export has no request IDs",
+      "evidence": {
+        "native": "text_then_error/native.json",
+        "journal": "server_journal.jsonl"
+      },
+      "partial_output_tokens_local": 10,
+      "partial_count_source": "verified local whole-text tokenizer; excluded from completed totals"
+    },
+    {
+      "case": "one_content_chunk",
+      "attempted": 5,
+      "native_completed": 5,
+      "native_failed": 0,
+      "oracle_outcome": "completed",
+      "explicit_error_false_successes": 0,
+      "total_output_tokens": 15,
+      "peak_choices_events_per_second": 10,
+      "duration_seconds": 0.057408958091400564,
+      "partial_text_exports": [],
+      "association": "input ordinal plus fixture ID; native export has no request IDs",
+      "evidence": {
+        "native": "one_content_chunk/native.json",
+        "journal": "server_journal.jsonl"
+      }
+    },
+    {
+      "case": "three_content_chunks",
+      "attempted": 5,
+      "native_completed": 5,
+      "native_failed": 0,
+      "oracle_outcome": "completed",
+      "explicit_error_false_successes": 0,
+      "total_output_tokens": 15,
+      "peak_choices_events_per_second": 20,
+      "duration_seconds": 0.08422562503255904,
+      "partial_text_exports": [],
+      "association": "input ordinal plus fixture ID; native export has no request IDs",
+      "evidence": {
+        "native": "three_content_chunks/native.json",
+        "journal": "server_journal.jsonl"
+      }
+    }
+  ],
+  "limits": [
+    "synthetic chat corpus; no production prevalence or model performance",
+    "captured PR head, not rebased onto main or a controlled one-patch baseline",
+    "input ordinal plus fixture ID; native export has no request IDs",
+    "server clocks measure emission, not client receipt",
+    "peak choices-event counters are not model-token throughput",
+    "no practitioner effort or demand evaluation"
+  ],
+  "recorded_command_elapsed_seconds": 160.83394637471065
+}

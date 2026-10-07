@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "id": "bounded-stream-completion-oracle-v1",
+  "scope": "The synthetic HTTP/SSE fixtures in this repository. This is an explicit audit policy, not a universal API standard.",
+  "outcomes": {
+    "completed": "A recognized normal finish event occurred and no higher-priority failure event occurred.",
+    "failed": "An explicit transport, SSE, or failure-finish signal occurred, regardless of earlier role or content events.",
+    "incomplete": "The transport ended without an explicit failure and without a recognized normal finish event."
+  },
+  "classification_precedence": [
+    {
+      "priority": 1,
+      "id": "http-error",
+      "match": {"event_type": "http_response", "status_gte": 400},
+      "outcome": "failed"
+    },
+    {
+      "priority": 2,
+      "id": "sse-error",
+      "match": {"event_type": "sse_error"},
+      "outcome": "failed"
+    },
+    {
+      "priority": 3,
+      "id": "failure-finish",
+      "match": {"event_type": "sse_finish", "reason_in": ["abort"]},
+      "outcome": "failed"
+    },
+    {
+      "priority": 4,
+      "id": "normal-finish",
+      "match": {"event_type": "sse_finish", "reason_in": ["stop"]},
+      "outcome": "completed"
+    },
+    {
+      "priority": 5,
+      "id": "transport-end-without-terminal",
+      "match": {"event_type": "http_eof", "without_prior_terminal": true},
+      "outcome": "incomplete"
+    }
+  ],
+  "partial_output_policy": {
+    "role_is_text_output": false,
+    "complete_output": "Nonempty content attached to a completed request.",
+    "partial_output": "Nonempty content received before a failed or incomplete outcome.",
+    "no_text_output": "No nonempty content event was observed.",
+    "retention": "Retain partial text and its count as failure or incomplete evidence.",
+    "aggregation": "Do not add partial-output tokens to completed-success token totals. Report them separately when the client exposes enough information."
+  },
+  "population_policy": {
+    "attempted": "Every request sent by the harness.",
+    "completed": "Only oracle outcome completed.",
+    "failed": "Only oracle outcome failed.",
+    "incomplete": "Only oracle outcome incomplete; do not silently fold it into completed.",
+    "downstream_compatibility": "If a client has only success/failure fields, preserve the three-way oracle result separately and state any projection into the client schema."
+  },
+  "limits": [
+    "Only stop is accepted as a normal finish reason for the current corpus.",
+    "Only abort is declared as a failure finish reason for the current corpus.",
+    "Other finish reasons require a versioned policy update rather than inference.",
+    "[DONE] is a stream terminator, not by itself proof of successful completion.",
+    "A clean HTTP EOF is a transport fact, not by itself proof of successful completion."
+  ]
+}

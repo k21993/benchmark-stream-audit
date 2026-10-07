@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "id": "vllm-b6d8e8a-native-cli-mac",
+  "client": "vllm",
+  "revision": "b6d8e8afd985f5711eee68e343d2ce908d166488",
+  "execution_layer": "full_cli",
+  "platform": "macOS 26.6.2 arm64; native CPU editable installation",
+  "endpoint": "OpenAI-compatible HTTP/1.1 streaming chat SSE on loopback",
+  "request_contract": {
+    "backend": "openai-chat",
+    "stream": true,
+    "include_usage": true,
+    "max_completion_tokens": 32,
+    "requests_per_scenario": 5,
+    "scenario_count": 6,
+    "total_measured_requests": 30,
+    "num_warmups": 0,
+    "ready_check_timeout_sec": 0,
+    "max_concurrency": 1,
+    "request_rate": "inf",
+    "request_id_prefix": "",
+    "dataset": "custom JSONL, no shuffle or oversampling, no chat template",
+    "content_shape": "user message with one typed text-content entry",
+    "rust_delegation": false
+  },
+  "first_event_rule": "TTFT is the first nonempty choices event, including role-only frames",
+  "end_event_rule": {
+    "observed_success": "at least one nonempty choices event and no caught exception",
+    "explicit_error_validation": false,
+    "reported_latency": "start to last choices event; later usage/DONE/EOF processing is excluded"
+  },
+  "token_sources": {
+    "precedence": [
+      "nonzero terminal usage",
+      "whole reconstructed text through local tokenizer"
+    ],
+    "fixture_local_count": 2,
+    "fixture_usage_count": 3,
+    "failed_requests_output_length": 0,
+    "peak_output_tokens_per_s": "choices-event timestamp buckets reconstructed from start_times, TTFT and ITL; not usage-weighted model token throughput"
+  },
+  "partial_output_policy": {
+    "declared_oracle": "explicit SSE error is failed regardless of preceding role or content",
+    "observed_role_then_error": "success with empty text and zero output tokens",
+    "observed_text_then_error": "success with partial Hello world text and local whole-text count two"
+  },
+  "aggregation_population": {
+    "native_completed": 25,
+    "native_failed": 5,
+    "oracle_completed": 15,
+    "oracle_failed": 15,
+    "explicit_error_false_successes": 10,
+    "token_totals": "successful native outputs under declared source precedence"
+  },
+  "measurement_windows": {
+    "aggregate_duration": "native benchmark duration around five sequential measured requests",
+    "throughput_denominator": "native duration, reconciled against native totals",
+    "client_event_window": "TTFT plus ITL reconciles with native latency",
+    "independent_client_wall_window": "unavailable; internal native consistency only",
+    "server_clock": "fixture emission and clean termination only"
+  },
+  "evidence": {
+    "root": "experiments/vllm-cli/evidence/mac-20261006",
+    "verification": "verification.json",
+    "provenance": "provenance.json",
+    "commands_and_flags": "plan.json and per-case cli.command.json",
+    "journal": "server_journal.jsonl",
+    "integrity": "SHA256SUMS"
+  },
+  "supported_claims": [
+    "actual unchanged pinned Python CLI exports ten role/text explicit-error false successes",
+    "normal and error-only controls pass with exactly five measured requests each",
+    "one/split usage totals stay at 15 while native peak choices-event counters are 10 and 20"
+  ],
+  "unsupported_claims": [
+    "current-version behavior or novel upstream issue",
+    "production failure prevalence or model performance",
+    "real model token generation times or independent client receipt timing",
+    "EOF/abort conformance through this six-case CLI run",
+    "practitioner demand or lower diagnosis effort"
+  ]
+}

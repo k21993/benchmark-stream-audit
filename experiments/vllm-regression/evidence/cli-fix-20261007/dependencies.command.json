@@ -1,0 +1,10 @@
+{
+  "argv": [
+    "/Users/karthiksuresh/Desktop/projects/benchmark-stream-audit/reruns/vllm-pr57519-20261007/.venv/bin/python",
+    "-c",
+    "import importlib.metadata,json; print(json.dumps(sorted(({'name':d.metadata['Name'],'version':d.version} for d in importlib.metadata.distributions()),key=lambda x:x['name'])))"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 0.1821560829412192
+}

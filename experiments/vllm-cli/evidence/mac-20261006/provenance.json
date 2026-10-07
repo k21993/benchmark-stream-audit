@@ -1,0 +1,38 @@
+{
+  "before": {
+    "commit": "b6d8e8afd985f5711eee68e343d2ce908d166488",
+    "source_root": "/Users/karthiksuresh/Desktop/projects/benchmark-stream-audit/reruns/vllm-mac-20261006-attempt01/upstream",
+    "source_sha256": {
+      "vllm/benchmarks/lib/endpoint_request_func.py": "f31fae8c573ecc4bf8e31dae03823502e71404333e8111f4b535432758302b29",
+      "vllm/benchmarks/serve.py": "ec96e4ed919aef37e587c3f71789ebf4d8b4261fd588dda04af0d8903d027038",
+      "vllm/entrypoints/cli/main.py": "c170890a71e7e3110f6e7acdd4dd376294b7f4cb1d511b70c3593dfc55cb21fc",
+      "vllm/entrypoints/cli/benchmark/main.py": "b3e1479bf60a3d5756ca5a56c4471dd215cb2050517d30a7440ca4a5535f0139",
+      "vllm/benchmarks/datasets/datasets.py": "6f2239d9d27fe439f255bef3bc8df1f484608fdd31b316fd21c32dd2d3f769f7"
+    },
+    "package": {
+      "origin": "/Users/karthiksuresh/Desktop/projects/benchmark-stream-audit/reruns/vllm-mac-20261006-attempt01/upstream/vllm/__init__.py",
+      "python": "3.12.14 (main, Aug 12 2026, 13:57:54) [Clang 21.0.0 (clang-2100.1.1.101)]",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "version": "0.1.dev1+gb6d8e8afd.cpu"
+    },
+    "tracked_and_untracked_source_clean": true
+  },
+  "after": {
+    "commit": "b6d8e8afd985f5711eee68e343d2ce908d166488",
+    "source_root": "/Users/karthiksuresh/Desktop/projects/benchmark-stream-audit/reruns/vllm-mac-20261006-attempt01/upstream",
+    "source_sha256": {
+      "vllm/benchmarks/lib/endpoint_request_func.py": "f31fae8c573ecc4bf8e31dae03823502e71404333e8111f4b535432758302b29",
+      "vllm/benchmarks/serve.py": "ec96e4ed919aef37e587c3f71789ebf4d8b4261fd588dda04af0d8903d027038",
+      "vllm/entrypoints/cli/main.py": "c170890a71e7e3110f6e7acdd4dd376294b7f4cb1d511b70c3593dfc55cb21fc",
+      "vllm/entrypoints/cli/benchmark/main.py": "b3e1479bf60a3d5756ca5a56c4471dd215cb2050517d30a7440ca4a5535f0139",
+      "vllm/benchmarks/datasets/datasets.py": "6f2239d9d27fe439f255bef3bc8df1f484608fdd31b316fd21c32dd2d3f769f7"
+    },
+    "package": {
+      "origin": "/Users/karthiksuresh/Desktop/projects/benchmark-stream-audit/reruns/vllm-mac-20261006-attempt01/upstream/vllm/__init__.py",
+      "python": "3.12.14 (main, Aug 12 2026, 13:57:54) [Clang 21.0.0 (clang-2100.1.1.101)]",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "version": "0.1.dev1+gb6d8e8afd.cpu"
+    },
+    "tracked_and_untracked_source_clean": true
+  }
+}

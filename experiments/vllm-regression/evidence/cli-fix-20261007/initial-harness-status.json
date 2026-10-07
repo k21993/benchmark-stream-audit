@@ -1,0 +1,5 @@
+{
+  "status": "blocked",
+  "cli_gate_passed": false,
+  "reason": "unexpected fixture case"
+}

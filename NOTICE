@@ -1,0 +1,5 @@
+Project code is licensed under MIT. See LICENSE.
+
+Copied vLLM source retains its Apache License 2.0 terms and copyright notices.
+The license is included beside each source snapshot and in bundle/vllm/source.
+The project license does not replace these third-party terms.

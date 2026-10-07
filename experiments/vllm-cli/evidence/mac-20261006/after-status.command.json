@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "git",
+    "-C",
+    "/Users/karthiksuresh/Desktop/projects/benchmark-stream-audit/reruns/vllm-mac-20261006-attempt01/upstream",
+    "status",
+    "--porcelain",
+    "--untracked-files=normal"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 0.07885908300522715
+}

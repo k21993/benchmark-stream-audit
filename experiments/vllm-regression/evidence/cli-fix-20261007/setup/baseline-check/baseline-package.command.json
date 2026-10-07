@@ -1,0 +1,10 @@
+{
+  "argv": [
+    "/Users/karthiksuresh/Desktop/projects/benchmark-stream-audit/reruns/vllm-mac-20261006-attempt01/.venv/bin/python",
+    "-c",
+    "import importlib.util,importlib.metadata,json,platform,sys; s=importlib.util.find_spec('vllm'); print(json.dumps({'origin':s.origin if s else None,'python':sys.version,'platform':platform.platform(),'version':importlib.metadata.version('vllm')}))"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 0.12327754101715982
+}

@@ -1,0 +1,12 @@
+{
+  "actual_cli_run": "reruns/vllm-pr57519-cli-20261007-run01",
+  "outer_runner_exit_code": 1,
+  "all_six_native_cli_exit_codes": 0,
+  "all_six_native_cli_timeouts": false,
+  "actual_measured_requests": 30,
+  "auxiliary_get_metrics_reads": 24,
+  "harness_correction": "Initial checker rejected routine GET /metrics reads. Allow exactly auxiliary GET /metrics; continue strict case, request count, identity, payload, emission and EOF checks.",
+  "native_exports_journal_commands_and_provenance": "copied verbatim from completed raw run; no request rerun or evidence editing",
+  "initial_status_preserved": "initial-harness-status.json",
+  "reverification": "completed offline using corrected checker"
+}

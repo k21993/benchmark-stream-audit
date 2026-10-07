@@ -1,0 +1,6 @@
+{
+  "tokenizer_class": "PreTrainedTokenizerFast",
+  "unk_token": "[UNK]",
+  "model_max_length": 4096,
+  "clean_up_tokenization_spaces": false
+}

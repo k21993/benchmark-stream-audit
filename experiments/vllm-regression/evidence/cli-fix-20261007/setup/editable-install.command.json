@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/opt/homebrew/bin/uv",
+    "pip",
+    "install",
+    "--python",
+    "/Users/karthiksuresh/Desktop/projects/benchmark-stream-audit/reruns/vllm-pr57519-20261007/.venv/bin/python",
+    "--no-deps",
+    "--no-build-isolation",
+    "-e",
+    "/Users/karthiksuresh/Desktop/projects/benchmark-stream-audit/reruns/vllm-pr57519-20261007/upstream"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 272.4835236669751
+}

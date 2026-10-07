@@ -1,0 +1,10 @@
+{
+  "baseline_inventory": "experiments/vllm-cli/evidence/mac-20261006/dependencies.stdout",
+  "candidate_inventory": "dependencies.stdout in CLI run",
+  "differences": {
+    "vllm": {
+      "baseline": "0.1.dev1+gb6d8e8afd.cpu",
+      "candidate": "0.1.dev1+g1e74a69c7.cpu"
+    }
+  }
+}

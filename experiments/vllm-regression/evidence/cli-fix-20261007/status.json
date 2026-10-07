@@ -1,0 +1,5 @@
+{
+  "status": "verified",
+  "cli_gate_passed": true,
+  "verification": "offline verification after allowing observed GET /metrics auxiliary reads; raw run status retained"
+}

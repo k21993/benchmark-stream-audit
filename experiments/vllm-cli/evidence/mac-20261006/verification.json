@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "status": "verified",
+  "cli_gate_passed": true,
+  "scope": "actual pinned vLLM Python CLI against synthetic loopback fixture",
+  "commit": "b6d8e8afd985f5711eee68e343d2ce908d166488",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "attempted": 30,
+  "cases": [
+    {
+      "case": "normal",
+      "attempted": 5,
+      "native_completed": 5,
+      "native_failed": 0,
+      "oracle_outcome": "completed",
+      "explicit_error_false_successes": 0,
+      "total_output_tokens": 15,
+      "peak_choices_events_per_second": 15,
+      "duration_seconds": 0.07142429193481803,
+      "partial_text_exports": [],
+      "association": "input ordinal plus fixture ID; native export has no request IDs",
+      "evidence": {
+        "native": "normal/native.json",
+        "journal": "server_journal.jsonl"
+      }
+    },
+    {
+      "case": "error_only",
+      "attempted": 5,
+      "native_completed": 0,
+      "native_failed": 5,
+      "oracle_outcome": "failed",
+      "explicit_error_false_successes": 0,
+      "total_output_tokens": 0,
+      "peak_choices_events_per_second": 0,
+      "duration_seconds": 0.0307852920377627,
+      "partial_text_exports": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "association": "input ordinal plus fixture ID; native export has no request IDs",
+      "evidence": {
+        "native": "error_only/native.json",
+        "journal": "server_journal.jsonl"
+      }
+    },
+    {
+      "case": "role_then_error",
+      "attempted": 5,
+      "native_completed": 5,
+      "native_failed": 0,
+      "oracle_outcome": "failed",
+      "explicit_error_false_successes": 5,
+      "total_output_tokens": 0,
+      "peak_choices_events_per_second": 5,
+      "duration_seconds": 0.04490033304318786,
+      "partial_text_exports": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "association": "input ordinal plus fixture ID; native export has no request IDs",
+      "evidence": {
+        "native": "role_then_error/native.json",
+        "journal": "server_journal.jsonl"
+      }
+    },
+    {
+      "case": "text_then_error",
+      "attempted": 5,
+      "native_completed": 5,
+      "native_failed": 0,
+      "oracle_outcome": "failed",
+      "explicit_error_false_successes": 5,
+      "total_output_tokens": 10,
+      "peak_choices_events_per_second": 5,
+      "duration_seconds": 0.04621583397965878,
+      "partial_text_exports": [
+        "Hello world",
+        "Hello world",
+        "Hello world",
+        "Hello world",
+        "Hello world"
+      ],
+      "association": "input ordinal plus fixture ID; native export has no request IDs",
+      "evidence": {
+        "native": "text_then_error/native.json",
+        "journal": "server_journal.jsonl"
+      }
+    },
+    {
+      "case": "one_content_chunk",
+      "attempted": 5,
+      "native_completed": 5,
+      "native_failed": 0,
+      "oracle_outcome": "completed",
+      "explicit_error_false_successes": 0,
+      "total_output_tokens": 15,
+      "peak_choices_events_per_second": 10,
+      "duration_seconds": 0.05857995804399252,
+      "partial_text_exports": [],
+      "association": "input ordinal plus fixture ID; native export has no request IDs",
+      "evidence": {
+        "native": "one_content_chunk/native.json",
+        "journal": "server_journal.jsonl"
+      }
+    },
+    {
+      "case": "three_content_chunks",
+      "attempted": 5,
+      "native_completed": 5,
+      "native_failed": 0,
+      "oracle_outcome": "completed",
+      "explicit_error_false_successes": 0,
+      "total_output_tokens": 15,
+      "peak_choices_events_per_second": 20,
+      "duration_seconds": 0.085179916000925,
+      "partial_text_exports": [],
+      "association": "input ordinal plus fixture ID; native export has no request IDs",
+      "evidence": {
+        "native": "three_content_chunks/native.json",
+        "journal": "server_journal.jsonl"
+      }
+    }
+  ],
+  "explicit_error_false_successes": 10,
+  "classification": "reproduced",
+  "elapsed_seconds": 115.94811433297582,
+  "limits": [
+    "synthetic corpus; no production prevalence or model performance",
+    "native arrays associate by input ordinal, not an exported response ID",
+    "server clocks describe emission, not client receipt",
+    "peak choices-event counter is not independently measured model token throughput",
+    "no comparison of practitioner diagnosis effort performed"
+  ]
+}

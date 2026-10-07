@@ -1,0 +1,29 @@
+{
+  "fetched_at_utc": "2026-10-07T20:36:12.797982+00:00",
+  "pr": 57519,
+  "head_commit": "1e74a69c71604c3c3ec6cc3cce9dbe8b702bfcda",
+  "base_commit": "d5f0a6e829faa69d1db289bf62b14dae136c02b2",
+  "state_at_review": "OPEN",
+  "files": [
+    {
+      "path": "vllm/benchmarks/lib/endpoint_request_func.py",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/1e74a69c71604c3c3ec6cc3cce9dbe8b702bfcda/vllm/benchmarks/lib/endpoint_request_func.py",
+      "sha256": "4dc3f56168973789110090a9136d88c94a242d365d8b1c0287b7c56667c67364",
+      "bytes": 33970
+    },
+    {
+      "path": "tests/benchmarks/test_endpoint_request_func_timing.py",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/1e74a69c71604c3c3ec6cc3cce9dbe8b702bfcda/tests/benchmarks/test_endpoint_request_func_timing.py",
+      "sha256": "d4c8c951db2b0fd288c6d16354e9754ed8aa7ea7cd74709fcdf65586cdcdd420",
+      "bytes": 16187
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/1e74a69c71604c3c3ec6cc3cce9dbe8b702bfcda/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357
+    }
+  ],
+  "scope": "captured PR head, not rebased onto current main",
+  "public_subset": "Request module, timing helpers and license. Original source bytes preserved."
+}

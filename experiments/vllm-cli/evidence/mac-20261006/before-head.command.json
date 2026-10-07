@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "git",
+    "-C",
+    "/Users/karthiksuresh/Desktop/projects/benchmark-stream-audit/reruns/vllm-mac-20261006-attempt01/upstream",
+    "rev-parse",
+    "HEAD"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 0.041577666997909546
+}

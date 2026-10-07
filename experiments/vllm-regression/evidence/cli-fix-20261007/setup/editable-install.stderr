@@ -1,0 +1,9 @@
+Using Python 3.12.14 environment at: /Users/karthiksuresh/Desktop/projects/benchmark-stream-audit/reruns/vllm-pr57519-20261007/.venv
+Resolved 1 package in 12.61s
+   Building vllm @ file:///Users/karthiksuresh/Desktop/projects/benchmark-stream-audit/reruns/vllm-pr57519-20261007/upstream
+      Built vllm @ file:///Users/karthiksuresh/Desktop/projects/benchmark-stream-audit/reruns/vllm-pr57519-20261007/upstream
+Prepared 1 package in 4m 19s
+Uninstalled 1 package in 2ms
+Installed 1 package in 7ms
+ - vllm==0.1.dev1+gb6d8e8afd.cpu (from file:///Users/karthiksuresh/Desktop/projects/benchmark-stream-audit/reruns/vllm-mac-20261006-attempt01/upstream)
+ + vllm==0.1.dev1+g1e74a69c7.cpu (from file:///Users/karthiksuresh/Desktop/projects/benchmark-stream-audit/reruns/vllm-pr57519-20261007/upstream)

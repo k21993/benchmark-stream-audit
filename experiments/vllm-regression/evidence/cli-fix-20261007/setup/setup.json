@@ -1,0 +1,18 @@
+{
+  "setup_started_at_utc": "2026-10-07 22:01:47 UTC",
+  "setup_deadline_at_utc": "2026-10-07 22:31:47 UTC",
+  "setup_completed_before_cli_start_at_utc": "2026-10-07 22:07:41 UTC",
+  "dependency_reuse": "cp -cR baseline virtual environment to isolated candidate; then uv editable install --no-deps --no-build-isolation",
+  "source_fetch": {
+    "method": "git init; git fetch --depth 1 https://github.com/vllm-project/vllm.git 1e74a69c71604c3c3ec6cc3cce9dbe8b702bfcda; git checkout --detach FETCH_HEAD",
+    "exit_code": 0,
+    "capture": "tool-return observation; install commands have direct file captures"
+  },
+  "environment": {
+    "SDKROOT": "/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk",
+    "VLLM_TARGET_DEVICE": "cpu",
+    "MAX_JOBS": "2"
+  },
+  "baseline_pristine_and_import_origin_verified": true,
+  "no_models_or_gpu": true
+}

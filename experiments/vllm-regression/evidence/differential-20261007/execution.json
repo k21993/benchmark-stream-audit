@@ -1,0 +1,28 @@
+{
+  "metadata_recorded_at_utc": "2026-10-07T20:41:51.805336+00:00",
+  "argv": [
+    "/Users/karthiksuresh/Desktop/projects/benchmark-stream-audit/reruns/vllm-mac-20261006-attempt01/.venv/bin/python",
+    "-B",
+    "scripts/vllm_stream_regression.py",
+    "run",
+    "--output",
+    "experiments/vllm-regression/evidence/differential-20261007"
+  ],
+  "observed_exit_code": 1,
+  "exit_reason": "completed comparison; current-main conformance violations cause exit 1",
+  "runtime_packages_recorded_after_run": {
+    "aiohttp": "3.14.4",
+    "regex": "2026.9.29",
+    "tqdm": "4.70.1"
+  },
+  "dependencies_installed": false,
+  "upstream_source_modified": false,
+  "current_cli_executed": false,
+  "request_function_calls": 28,
+  "fake_helper_classes": [
+    "_FakeContent",
+    "_FakeResponse",
+    "_FakeSession"
+  ],
+  "helper_execution_scope": "AST-selected three unchanged helper classes, not the full pytest module"
+}

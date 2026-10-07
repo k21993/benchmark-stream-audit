@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "id": "vllm-pr57519-1e74a69-native-cli-mac",
+  "client": "vllm",
+  "revision": "1e74a69c71604c3c3ec6cc3cce9dbe8b702bfcda",
+  "execution_layer": "full_cli",
+  "platform": "macOS 26.6.2 arm64; native CPU editable installation",
+  "endpoint": "OpenAI-compatible HTTP/1.1 streaming chat SSE on loopback",
+  "request_contract": {
+    "backend": "openai-chat",
+    "stream": true,
+    "include_usage": true,
+    "max_completion_tokens": 32,
+    "requests_per_scenario": 5,
+    "scenario_count": 6,
+    "total_measured_requests": 30,
+    "num_warmups": 0,
+    "ready_check_timeout_sec": 0,
+    "max_concurrency": 1,
+    "request_rate": "inf",
+    "request_id_prefix": "",
+    "dataset": "custom JSONL, no shuffle or oversampling, no chat template",
+    "content_shape": "user message with one typed text-content entry",
+    "rust_delegation": false
+  },
+  "first_event_rule": "TTFT is the first nonempty choices event, including role-only frames",
+  "end_event_rule": {
+    "observed_success": "no explicit server error and at least one nonempty choices event, with no caught exception",
+    "explicit_error_validation": true,
+    "reported_latency": "start to last choices event; later usage/DONE/EOF processing is excluded"
+  },
+  "token_sources": {
+    "precedence": [
+      "nonzero terminal usage",
+      "whole reconstructed text through local tokenizer"
+    ],
+    "fixture_local_count": 2,
+    "fixture_usage_count": 3,
+    "failed_requests_output_length": 0,
+    "peak_output_tokens_per_s": "choices-event timestamp buckets reconstructed from start_times, TTFT and ITL; not usage-weighted model token throughput"
+  },
+  "partial_output_policy": {
+    "declared_oracle": "explicit SSE error is failed regardless of preceding role or content",
+    "observed_role_then_error": "failure with exact server reason, empty text and zero completed-output tokens",
+    "observed_text_then_error": "failure with exact server reason, preserved Hello world text and zero completed-output tokens",
+    "local_partial_count": "two per text request, ten total; audit count excluded from native completed-output statistics"
+  },
+  "aggregation_population": {
+    "native_completed": 15,
+    "native_failed": 15,
+    "oracle_completed": 15,
+    "oracle_failed": 15,
+    "explicit_error_false_successes": 0,
+    "token_totals": "successful native outputs under declared source precedence"
+  },
+  "measurement_windows": {
+    "aggregate_duration": "native benchmark duration around five sequential measured requests",
+    "throughput_denominator": "native duration, reconciled against native totals",
+    "client_event_window": "TTFT plus ITL reconciles with native latency",
+    "independent_client_wall_window": "unavailable; internal native consistency only",
+    "server_clock": "fixture emission and clean termination only"
+  },
+  "evidence": {
+    "root": "experiments/vllm-regression/evidence/cli-fix-20261007",
+    "verification": "verification.json",
+    "provenance": "provenance.json",
+    "commands_and_flags": "plan.json and per-case cli.command.json",
+    "journal": "server_journal.jsonl",
+    "integrity": "SHA256SUMS",
+    "source_snapshot": "experiments/vllm-regression/evidence/pr57519-cli-source-20261007"
+  },
+  "supported_claims": [
+    "actual pristine captured PR Python CLI reports all fifteen explicit-error requests as failures with exact reasons",
+    "all fifteen normal controls pass and retain their usage counts",
+    "failed partial text is retained while ten local partial tokens are excluded from completed-output totals",
+    "one/split usage totals remain 15 with peak choices-event counters 10 versus 20"
+  ],
+  "unsupported_claims": [
+    "merged or rebased current main behavior",
+    "production prevalence, model speed or measured model token throughput",
+    "causal one-patch CLI comparison against the older baseline",
+    "EOF/abort or late-error conformance through this six-case CLI corpus",
+    "human usefulness or product demand"
+  ]
+}

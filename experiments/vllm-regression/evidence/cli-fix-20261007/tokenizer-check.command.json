@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "/Users/karthiksuresh/Desktop/projects/benchmark-stream-audit/reruns/vllm-pr57519-20261007/.venv/bin/python",
+    "-c",
+    "import json,sys; from transformers import AutoTokenizer; t=AutoTokenizer.from_pretrained(sys.argv[1],local_files_only=True); ids=t('Hello world',add_special_tokens=False).input_ids; print(json.dumps({'whole_text_ids':ids})); assert len(ids)==2",
+    "/Users/karthiksuresh/Desktop/projects/benchmark-stream-audit/reruns/vllm-pr57519-cli-20261007-run01/tokenizer"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 6.771557291969657
+}
