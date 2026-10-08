@@ -18,7 +18,7 @@ python3 -B scripts/check_all.py
 ```
 
 The demo reads saved evidence. The checks verify hashes, native reports,
-28 request-function probes and 19 regression tests. One test uses a local HTTP
+28 request-function probes and 22 regression tests. One test uses a local HTTP
 fixture. These commands do not run vLLM or call external services.
 
 ## Example
@@ -35,7 +35,7 @@ Across all six native CLI cases, the baseline reports 25 completed / 5 failed.
 The captured fix reports 15 completed / 15 failed, with zero false successes.
 Normal controls pass in both runs.
 
-The fix comes from [vLLM PR #57519](https://github.com/vllm-project/vllm/pull/57519).
+The proposed fix comes from [vLLM PR #57519](https://github.com/vllm-project/vllm/pull/57519).
 The native baseline is commit `b6d8e8afd985f5711eee68e343d2ce908d166488`.
 The captured fix is commit `1e74a69c71604c3c3ec6cc3cce9dbe8b702bfcda`.
 The request-function comparison also covers captured main
@@ -48,6 +48,31 @@ The request-function comparison also covers captured main
 - Failed output excluded from completed-output token totals.
 - Normal completion and one versus three content chunks.
 - Error after finish/usage and coalesced reads at the request-function layer.
+
+Error after finish is classified as failed by this corpus's declared policy.
+These request-function probes cover the chat backend only. Exact error-object
+checks strengthen the proposed fix's existing error-message assertion.
+
+## Replay the pinned sources
+
+To execute the 28 probes again, install the three request-function dependencies
+in a separate environment:
+
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements/replay.txt
+.venv/bin/python -B scripts/vllm_stream_regression.py replay --output reruns/replay
+```
+
+Use a new output directory for each run. Replay passes only when every probe
+matches the recorded outcomes, errors, text and usage. It expects the baseline's
+known failures and the proposed fix's corrected behavior. New timestamps are
+checked for consistency, not equality with the old run.
+
+CI runs saved-evidence checks without dependencies and executes these pinned
+sources in a separate replay job. Both jobs cover Linux/macOS and Python 3.10/3.14.
+Replay uses fake HTTP sessions, with no model, GPU or external service calls.
+It does not test new upstream revisions or rerun the native CLI.
 
 Code is in `benchmark_stream_audit/` and `scripts/`. Tests are in `tests/`.
 Saved reports, journals, commands and source snapshots are in `experiments/`.

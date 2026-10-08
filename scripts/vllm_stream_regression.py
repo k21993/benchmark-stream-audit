@@ -9,20 +9,24 @@ import sys
 sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from benchmark_stream_audit.vllm_regression import SOURCES, run_probes, verify_result
+from benchmark_stream_audit.vllm_regression import (
+    SOURCES, run_probes, verify_replay, verify_result,
+)
+
+RECORDED = ROOT / "experiments/vllm-regression/evidence/differential-20261007/result.json"
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="action", required=True)
-    run = sub.add_parser("run")
-    run.add_argument("--output", required=True, type=Path)
+    for action in ("run", "replay"):
+        run = sub.add_parser(action)
+        run.add_argument("--output", required=True, type=Path)
     verify = sub.add_parser("verify")
-    verify.add_argument("--result", type=Path, default=ROOT /
-                        "experiments/vllm-regression/evidence/differential-20261007/result.json")
+    verify.add_argument("--result", type=Path, default=RECORDED)
     args = parser.parse_args()
     try:
-        if args.action == "run":
+        if args.action in ("run", "replay"):
             output = args.output.resolve()
             if output.exists():
                 raise ValueError("output exists; use a new directory")
@@ -38,6 +42,10 @@ def main():
             output.mkdir(parents=True, exist_ok=False)
             (output / "result.json").write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")
             print(json.dumps(result["summary"], indent=2))
+            if args.action == "replay":
+                verify_replay(ROOT, result, json.loads(RECORDED.read_text()))
+                print("Executed 28 pinned-source probes; all recorded outcomes and errors matched.")
+                return 0
             return 1 if any(row["failed_checks"] for row in result["rows"]) else 0
         result = json.loads(args.result.read_text())
         verify_result(ROOT, result)

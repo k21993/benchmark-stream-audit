@@ -9,7 +9,9 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from benchmark_stream_audit.vllm_regression import assess, verify_result
+from benchmark_stream_audit.vllm_regression import (
+    assess, summarize, verify_replay, verify_result,
+)
 
 RESULT = ROOT / "experiments/vllm-regression/evidence/differential-20261007/result.json"
 
@@ -85,13 +87,49 @@ class StreamConformanceTests(unittest.TestCase):
         before = RESULT.read_bytes()
         for output in (RESULT.parent, ROOT / "bundle/new-regression",
                        ROOT / "experiments/vllm-regression/evidence/upstream-20261007/new"):
-            command = [sys.executable, "-B", str(ROOT / "scripts/vllm_stream_regression.py"),
-                       "run", "--output", str(output)]
-            result = subprocess.run(command, capture_output=True, text=True, timeout=5)
-            self.assertEqual(result.returncode, 2, result.stderr)
+            for action in ("run", "replay"):
+                command = [sys.executable, "-B", str(ROOT / "scripts/vllm_stream_regression.py"),
+                           action, "--output", str(output)]
+                result = subprocess.run(command, capture_output=True, text=True, timeout=5)
+                self.assertEqual(result.returncode, 2, result.stderr)
             if output != RESULT.parent:
                 self.assertFalse(output.exists())
         self.assertEqual(RESULT.read_bytes(), before)
+
+    def test_replay_accepts_new_clocks_with_the_same_behavior(self):
+        """A new execution must not be bound to the archived timestamps."""
+        fresh = copy.deepcopy(self.result)
+        for row in fresh["rows"]:
+            output = row["output"]
+            output["start_time"] += 100
+            output["ttft"] *= 2
+            output["itl"] = [interval * 2 for interval in output["itl"]]
+            output["latency"] *= 2
+        verify_replay(ROOT, fresh, self.result)
+
+    def test_replay_rejects_a_changed_baseline_outcome(self):
+        """Known baseline failures must not be silently replaced by passes."""
+        fresh = copy.deepcopy(self.result)
+        row = next(r for r in fresh["rows"]
+                   if r["variant"] == "main" and r["case"] == "role_then_error")
+        row["output"]["success"] = False
+        row["output"]["error"] = json.dumps(row["expected"]["error"])
+        row["failed_checks"] = assess(row["case"], row["output"])
+        fresh["summary"] = summarize(fresh["rows"])
+        verify_result(ROOT, fresh)
+        with self.assertRaisesRegex(ValueError, "conformance checks changed"):
+            verify_replay(ROOT, fresh, self.result)
+
+    def test_replay_rejects_different_errors_with_identical_failure_counts(self):
+        """An unrelated failure must not pass as the expected baseline defect."""
+        fresh = copy.deepcopy(self.result)
+        row = next(r for r in fresh["rows"]
+                   if r["variant"] == "main" and r["case"] == "error_only")
+        row["output"]["error"] = "an unrelated failure"
+        self.assertEqual(assess(row["case"], row["output"]), row["failed_checks"])
+        verify_result(ROOT, fresh)
+        with self.assertRaisesRegex(ValueError, "error changed"):
+            verify_replay(ROOT, fresh, self.result)
 
 
 if __name__ == "__main__":

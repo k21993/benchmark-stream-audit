@@ -203,3 +203,19 @@ def verify_result(repo: Path, result: dict) -> None:
         raise ValueError("missing or duplicate probes")
     if result["summary"] != summarize(result["rows"]):
         raise ValueError("summary differs")
+
+
+def verify_replay(repo: Path, result: dict, recorded: dict) -> None:
+    """Require the pinned implementations to reproduce the recorded behavior."""
+    verify_result(repo, result)
+    verify_result(repo, recorded)
+    expected_rows = {(row["variant"], row["case"], row["layout"]): row
+                     for row in recorded["rows"]}
+    for row in result["rows"]:
+        key = row["variant"], row["case"], row["layout"]
+        expected = expected_rows[key]
+        if row["failed_checks"] != expected["failed_checks"]:
+            raise ValueError(f"{key}: conformance checks changed")
+        for field in ("success", "error", "generated_text", "output_tokens", "prompt_len"):
+            if row["output"][field] != expected["output"][field]:
+                raise ValueError(f"{key}: {field} changed")

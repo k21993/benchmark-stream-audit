@@ -1,4 +1,4 @@
-name: Offline corpus checks
+name: Corpus checks
 
 on:
   push:
@@ -34,3 +34,29 @@ jobs:
         run: python -B scripts/check_all.py
       - name: Show the saved failure and correction
         run: python -B scripts/demo.py
+
+  replay:
+    name: Replay / ${{ matrix.os }} / Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ['3.10', '3.14']
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONNOUSERSITE: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install request-function dependencies
+        run: python -m pip install -r requirements/replay.txt
+      - name: Verify saved evidence hashes
+        run: python -B scripts/verify_frozen_corpus.py
+      - name: Execute pinned sources and check recorded behavior
+        run: python -B scripts/vllm_stream_regression.py replay --output reruns/replay
