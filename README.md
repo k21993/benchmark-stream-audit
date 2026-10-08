@@ -18,8 +18,8 @@ python3 -B scripts/check_all.py
 ```
 
 The demo reads saved evidence. The checks verify hashes, native reports,
-28 request-function probes and 22 regression tests. One test uses a local HTTP
-fixture. These commands do not run vLLM or call external services.
+28 historical request-function probes and 27 regression tests. One test uses a
+local HTTP fixture. These commands do not run vLLM or call external services.
 
 ## Example
 
@@ -74,6 +74,32 @@ sources in a separate replay job. Both jobs cover Linux/macOS and Python 3.10/3.
 Replay uses fake HTTP sessions, with no model, GPU or external service calls.
 It does not test new upstream revisions or rerun the native CLI.
 Failed CI replays retain `result.json` as an artifact for 14 days when available.
+
+## Check another revision
+
+Capture an explicit commit, then execute the same 14 chat probes against it:
+
+```sh
+REVISION=8352b2427f704652da1910f0d53f3fdcc2fa2b0d
+.venv/bin/python -B scripts/check_vllm_revision.py capture --revision "$REVISION" --output reruns/candidate-source
+.venv/bin/python -B scripts/check_vllm_revision.py check --revision "$REVISION" --source reruns/candidate-source --output reruns/candidate-check
+```
+
+Capture downloads the endpoint module, timing tests and license from GitHub.
+Check executes that module locally using the locked dependencies above and the
+original frozen fake-session helpers. Source hashes and the requested commit
+are checked before execution. Use fresh output directories; old evidence is preserved.
+
+Exit 0 means all probes conform, 1 means conformance failures, and 2 means an
+input or execution failure. Results retain per-probe inputs, outputs and errors.
+Import/API exceptions and upstream traceback errors are reported separately
+from contract failures. This command does not expect historical bugs to pass.
+It does not update historical replay or run automatically against moving main.
+
+The October 7, 2026 check of `8352b2427f70` completed all 14 probes: 6 conformed,
+8 failed the contract, including 6 false successes; no execution errors occurred.
+The endpoint module and timing tests were unchanged from captured main
+`08567505b093`. This is request-function evidence, not a new native CLI run.
 
 `requirements/replay.in` lists direct dependencies. `requirements/replay.txt`
 locks all dependencies and distribution hashes. To regenerate it with uv:

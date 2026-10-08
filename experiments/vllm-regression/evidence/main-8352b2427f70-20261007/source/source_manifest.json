@@ -1,0 +1,25 @@
+{
+  "repository": "vllm-project/vllm",
+  "commit": "8352b2427f704652da1910f0d53f3fdcc2fa2b0d",
+  "captured_at": "2026-10-08T03:55:37.197331+00:00",
+  "files": [
+    {
+      "path": "vllm/benchmarks/lib/endpoint_request_func.py",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/8352b2427f704652da1910f0d53f3fdcc2fa2b0d/vllm/benchmarks/lib/endpoint_request_func.py",
+      "bytes": 40969,
+      "sha256": "f31fae8c573ecc4bf8e31dae03823502e71404333e8111f4b535432758302b29"
+    },
+    {
+      "path": "tests/benchmarks/test_endpoint_request_func_timing.py",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/8352b2427f704652da1910f0d53f3fdcc2fa2b0d/tests/benchmarks/test_endpoint_request_func_timing.py",
+      "bytes": 13676,
+      "sha256": "5c7f92fba418c79029f4e445c566c85ed19dcd0ceaac7d533335e9bcea0bb5e8"
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/8352b2427f704652da1910f0d53f3fdcc2fa2b0d/LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    }
+  ]
+}

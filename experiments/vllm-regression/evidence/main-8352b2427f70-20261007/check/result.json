@@ -1,0 +1,626 @@
+{
+  "schema_version": 1,
+  "revision": "8352b2427f704652da1910f0d53f3fdcc2fa2b0d",
+  "checked_at": "2026-10-08T03:55:44.171241+00:00",
+  "layer": "complete endpoint module with frozen upstream fake session",
+  "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "status": "nonconformant",
+  "rows": [
+    {
+      "case": "normal",
+      "layout": "per_event",
+      "wire_hex": [
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22726f6c65223a22617373697374616e74227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a",
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22636f6e74656e74223a2248656c6c6f20776f726c64227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a",
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b7d2c2266696e6973685f726561736f6e223a2273746f70227d5d7d0a0a",
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b5d2c227573616765223a7b2270726f6d70745f746f6b656e73223a372c22636f6d706c6574696f6e5f746f6b656e73223a332c22746f74616c5f746f6b656e73223a31307d7d0a0a",
+        "646174613a205b444f4e455d0a0a"
+      ],
+      "expected": {
+        "outcome": "completed",
+        "text": "Hello world",
+        "error": null,
+        "usage": {
+          "prompt_tokens": 7,
+          "completion_tokens": 3,
+          "total_tokens": 10
+        },
+        "choices_events": 3
+      },
+      "output": {
+        "generated_text": "Hello world",
+        "success": true,
+        "latency": 3.991695120930672e-05,
+        "output_tokens": 3,
+        "ttft": 2.274999860674143e-05,
+        "itl": [
+          1.008401159197092e-05,
+          7.082941010594368e-06
+        ],
+        "tpot": 0.0,
+        "prompt_len": 7,
+        "error": "",
+        "start_time": 551489.447289041,
+        "client_queue_time": 0.0,
+        "input_audio_duration": 0.0,
+        "num_input_sequences": 1
+      },
+      "failed_checks": [],
+      "status": "conformant"
+    },
+    {
+      "case": "normal",
+      "layout": "coalesced",
+      "wire_hex": [
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22726f6c65223a22617373697374616e74227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22636f6e74656e74223a2248656c6c6f20776f726c64227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b7d2c2266696e6973685f726561736f6e223a2273746f70227d5d7d0a0a646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b5d2c227573616765223a7b2270726f6d70745f746f6b656e73223a372c22636f6d706c6574696f6e5f746f6b656e73223a332c22746f74616c5f746f6b656e73223a31307d7d0a0a646174613a205b444f4e455d0a0a"
+      ],
+      "expected": {
+        "outcome": "completed",
+        "text": "Hello world",
+        "error": null,
+        "usage": {
+          "prompt_tokens": 7,
+          "completion_tokens": 3,
+          "total_tokens": 10
+        },
+        "choices_events": 3
+      },
+      "output": {
+        "generated_text": "Hello world",
+        "success": true,
+        "latency": 1.916696783155203e-05,
+        "output_tokens": 3,
+        "ttft": 1.2209056876599789e-05,
+        "itl": [
+          3.999914042651653e-06,
+          2.9579969123005867e-06
+        ],
+        "tpot": 0.0,
+        "prompt_len": 7,
+        "error": "",
+        "start_time": 551489.447871416,
+        "client_queue_time": 0.0,
+        "input_audio_duration": 0.0,
+        "num_input_sequences": 1
+      },
+      "failed_checks": [],
+      "status": "conformant"
+    },
+    {
+      "case": "error_only",
+      "layout": "per_event",
+      "wire_hex": [
+        "646174613a207b226572726f72223a7b226d657373616765223a22696e6a65637465642066697874757265206661696c757265222c2274797065223a227365727665725f6572726f72222c22636f6465223a22666978747572655f6572726f72227d7d0a0a",
+        "646174613a205b444f4e455d0a0a"
+      ],
+      "expected": {
+        "outcome": "failed",
+        "text": "",
+        "error": {
+          "message": "injected fixture failure",
+          "type": "server_error",
+          "code": "fixture_error"
+        },
+        "usage": null,
+        "choices_events": 0
+      },
+      "output": {
+        "generated_text": "",
+        "success": false,
+        "latency": 0.0,
+        "output_tokens": 0,
+        "ttft": 0.0,
+        "itl": [],
+        "tpot": 0.0,
+        "prompt_len": 7,
+        "error": "Never received a valid chunk to calculate TTFT.This response will be marked as failed!",
+        "start_time": 551489.448264875,
+        "client_queue_time": 0.0,
+        "input_audio_duration": 0.0,
+        "num_input_sequences": 1
+      },
+      "failed_checks": [
+        "server_error_reason"
+      ],
+      "status": "nonconformant"
+    },
+    {
+      "case": "error_only",
+      "layout": "coalesced",
+      "wire_hex": [
+        "646174613a207b226572726f72223a7b226d657373616765223a22696e6a65637465642066697874757265206661696c757265222c2274797065223a227365727665725f6572726f72222c22636f6465223a22666978747572655f6572726f72227d7d0a0a646174613a205b444f4e455d0a0a"
+      ],
+      "expected": {
+        "outcome": "failed",
+        "text": "",
+        "error": {
+          "message": "injected fixture failure",
+          "type": "server_error",
+          "code": "fixture_error"
+        },
+        "usage": null,
+        "choices_events": 0
+      },
+      "output": {
+        "generated_text": "",
+        "success": false,
+        "latency": 0.0,
+        "output_tokens": 0,
+        "ttft": 0.0,
+        "itl": [],
+        "tpot": 0.0,
+        "prompt_len": 7,
+        "error": "Never received a valid chunk to calculate TTFT.This response will be marked as failed!",
+        "start_time": 551489.448618625,
+        "client_queue_time": 0.0,
+        "input_audio_duration": 0.0,
+        "num_input_sequences": 1
+      },
+      "failed_checks": [
+        "server_error_reason"
+      ],
+      "status": "nonconformant"
+    },
+    {
+      "case": "role_then_error",
+      "layout": "per_event",
+      "wire_hex": [
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22726f6c65223a22617373697374616e74227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a",
+        "646174613a207b226572726f72223a7b226d657373616765223a22696e6a65637465642066697874757265206661696c757265222c2274797065223a227365727665725f6572726f72222c22636f6465223a22666978747572655f6572726f72227d7d0a0a",
+        "646174613a205b444f4e455d0a0a"
+      ],
+      "expected": {
+        "outcome": "failed",
+        "text": "",
+        "error": {
+          "message": "injected fixture failure",
+          "type": "server_error",
+          "code": "fixture_error"
+        },
+        "usage": null,
+        "choices_events": 1
+      },
+      "output": {
+        "generated_text": "",
+        "success": true,
+        "latency": 1.2750038877129555e-05,
+        "output_tokens": 0,
+        "ttft": 1.2750038877129555e-05,
+        "itl": [],
+        "tpot": 0.0,
+        "prompt_len": 7,
+        "error": "",
+        "start_time": 551489.448961666,
+        "client_queue_time": 0.0,
+        "input_audio_duration": 0.0,
+        "num_input_sequences": 1
+      },
+      "failed_checks": [
+        "policy_outcome",
+        "server_error_reason"
+      ],
+      "status": "nonconformant"
+    },
+    {
+      "case": "role_then_error",
+      "layout": "coalesced",
+      "wire_hex": [
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22726f6c65223a22617373697374616e74227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a646174613a207b226572726f72223a7b226d657373616765223a22696e6a65637465642066697874757265206661696c757265222c2274797065223a227365727665725f6572726f72222c22636f6465223a22666978747572655f6572726f72227d7d0a0a646174613a205b444f4e455d0a0a"
+      ],
+      "expected": {
+        "outcome": "failed",
+        "text": "",
+        "error": {
+          "message": "injected fixture failure",
+          "type": "server_error",
+          "code": "fixture_error"
+        },
+        "usage": null,
+        "choices_events": 1
+      },
+      "output": {
+        "generated_text": "",
+        "success": true,
+        "latency": 6.375019438564777e-06,
+        "output_tokens": 0,
+        "ttft": 6.375019438564777e-06,
+        "itl": [],
+        "tpot": 0.0,
+        "prompt_len": 7,
+        "error": "",
+        "start_time": 551489.449320333,
+        "client_queue_time": 0.0,
+        "input_audio_duration": 0.0,
+        "num_input_sequences": 1
+      },
+      "failed_checks": [
+        "policy_outcome",
+        "server_error_reason"
+      ],
+      "status": "nonconformant"
+    },
+    {
+      "case": "text_then_error",
+      "layout": "per_event",
+      "wire_hex": [
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22636f6e74656e74223a2248656c6c6f20776f726c64227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a",
+        "646174613a207b226572726f72223a7b226d657373616765223a22696e6a65637465642066697874757265206661696c757265222c2274797065223a227365727665725f6572726f72222c22636f6465223a22666978747572655f6572726f72227d7d0a0a",
+        "646174613a205b444f4e455d0a0a"
+      ],
+      "expected": {
+        "outcome": "failed",
+        "text": "Hello world",
+        "error": {
+          "message": "injected fixture failure",
+          "type": "server_error",
+          "code": "fixture_error"
+        },
+        "usage": null,
+        "choices_events": 1
+      },
+      "output": {
+        "generated_text": "Hello world",
+        "success": true,
+        "latency": 8.00006091594696e-06,
+        "output_tokens": 0,
+        "ttft": 8.00006091594696e-06,
+        "itl": [],
+        "tpot": 0.0,
+        "prompt_len": 7,
+        "error": "",
+        "start_time": 551489.449673208,
+        "client_queue_time": 0.0,
+        "input_audio_duration": 0.0,
+        "num_input_sequences": 1
+      },
+      "failed_checks": [
+        "policy_outcome",
+        "server_error_reason"
+      ],
+      "status": "nonconformant"
+    },
+    {
+      "case": "text_then_error",
+      "layout": "coalesced",
+      "wire_hex": [
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22636f6e74656e74223a2248656c6c6f20776f726c64227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a646174613a207b226572726f72223a7b226d657373616765223a22696e6a65637465642066697874757265206661696c757265222c2274797065223a227365727665725f6572726f72222c22636f6465223a22666978747572655f6572726f72227d7d0a0a646174613a205b444f4e455d0a0a"
+      ],
+      "expected": {
+        "outcome": "failed",
+        "text": "Hello world",
+        "error": {
+          "message": "injected fixture failure",
+          "type": "server_error",
+          "code": "fixture_error"
+        },
+        "usage": null,
+        "choices_events": 1
+      },
+      "output": {
+        "generated_text": "Hello world",
+        "success": true,
+        "latency": 5.875015631318092e-06,
+        "output_tokens": 0,
+        "ttft": 5.875015631318092e-06,
+        "itl": [],
+        "tpot": 0.0,
+        "prompt_len": 7,
+        "error": "",
+        "start_time": 551489.450107125,
+        "client_queue_time": 0.0,
+        "input_audio_duration": 0.0,
+        "num_input_sequences": 1
+      },
+      "failed_checks": [
+        "policy_outcome",
+        "server_error_reason"
+      ],
+      "status": "nonconformant"
+    },
+    {
+      "case": "one_content_chunk",
+      "layout": "per_event",
+      "wire_hex": [
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22636f6e74656e74223a2248656c6c6f20776f726c64227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a",
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b7d2c2266696e6973685f726561736f6e223a2273746f70227d5d7d0a0a",
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b5d2c227573616765223a7b2270726f6d70745f746f6b656e73223a372c22636f6d706c6574696f6e5f746f6b656e73223a332c22746f74616c5f746f6b656e73223a31307d7d0a0a",
+        "646174613a205b444f4e455d0a0a"
+      ],
+      "expected": {
+        "outcome": "completed",
+        "text": "Hello world",
+        "error": null,
+        "usage": {
+          "prompt_tokens": 7,
+          "completion_tokens": 3,
+          "total_tokens": 10
+        },
+        "choices_events": 2
+      },
+      "output": {
+        "generated_text": "Hello world",
+        "success": true,
+        "latency": 1.6666948795318604e-05,
+        "output_tokens": 3,
+        "ttft": 1.0041985660791397e-05,
+        "itl": [
+          6.624963134527206e-06
+        ],
+        "tpot": 0.0,
+        "prompt_len": 7,
+        "error": "",
+        "start_time": 551489.450554833,
+        "client_queue_time": 0.0,
+        "input_audio_duration": 0.0,
+        "num_input_sequences": 1
+      },
+      "failed_checks": [],
+      "status": "conformant"
+    },
+    {
+      "case": "one_content_chunk",
+      "layout": "coalesced",
+      "wire_hex": [
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22636f6e74656e74223a2248656c6c6f20776f726c64227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b7d2c2266696e6973685f726561736f6e223a2273746f70227d5d7d0a0a646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b5d2c227573616765223a7b2270726f6d70745f746f6b656e73223a372c22636f6d706c6574696f6e5f746f6b656e73223a332c22746f74616c5f746f6b656e73223a31307d7d0a0a646174613a205b444f4e455d0a0a"
+      ],
+      "expected": {
+        "outcome": "completed",
+        "text": "Hello world",
+        "error": null,
+        "usage": {
+          "prompt_tokens": 7,
+          "completion_tokens": 3,
+          "total_tokens": 10
+        },
+        "choices_events": 2
+      },
+      "output": {
+        "generated_text": "Hello world",
+        "success": true,
+        "latency": 1.4459015801548958e-05,
+        "output_tokens": 3,
+        "ttft": 9.624985978007317e-06,
+        "itl": [
+          4.834029823541641e-06
+        ],
+        "tpot": 0.0,
+        "prompt_len": 7,
+        "error": "",
+        "start_time": 551489.451015541,
+        "client_queue_time": 0.0,
+        "input_audio_duration": 0.0,
+        "num_input_sequences": 1
+      },
+      "failed_checks": [],
+      "status": "conformant"
+    },
+    {
+      "case": "three_content_chunks",
+      "layout": "per_event",
+      "wire_hex": [
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22636f6e74656e74223a2248656c227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a",
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22636f6e74656e74223a226c6f227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a",
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22636f6e74656e74223a2220776f726c64227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a",
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b7d2c2266696e6973685f726561736f6e223a2273746f70227d5d7d0a0a",
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b5d2c227573616765223a7b2270726f6d70745f746f6b656e73223a372c22636f6d706c6574696f6e5f746f6b656e73223a332c22746f74616c5f746f6b656e73223a31307d7d0a0a",
+        "646174613a205b444f4e455d0a0a"
+      ],
+      "expected": {
+        "outcome": "completed",
+        "text": "Hello world",
+        "error": null,
+        "usage": {
+          "prompt_tokens": 7,
+          "completion_tokens": 3,
+          "total_tokens": 10
+        },
+        "choices_events": 4
+      },
+      "output": {
+        "generated_text": "Hello world",
+        "success": true,
+        "latency": 2.691708505153656e-05,
+        "output_tokens": 3,
+        "ttft": 9.709037840366364e-06,
+        "itl": [
+          6.249989382922649e-06,
+          5.749985575675964e-06,
+          5.208072252571583e-06
+        ],
+        "tpot": 0.0,
+        "prompt_len": 7,
+        "error": "",
+        "start_time": 551489.451413916,
+        "client_queue_time": 0.0,
+        "input_audio_duration": 0.0,
+        "num_input_sequences": 1
+      },
+      "failed_checks": [],
+      "status": "conformant"
+    },
+    {
+      "case": "three_content_chunks",
+      "layout": "coalesced",
+      "wire_hex": [
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22636f6e74656e74223a2248656c227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22636f6e74656e74223a226c6f227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22636f6e74656e74223a2220776f726c64227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b7d2c2266696e6973685f726561736f6e223a2273746f70227d5d7d0a0a646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b5d2c227573616765223a7b2270726f6d70745f746f6b656e73223a372c22636f6d706c6574696f6e5f746f6b656e73223a332c22746f74616c5f746f6b656e73223a31307d7d0a0a646174613a205b444f4e455d0a0a"
+      ],
+      "expected": {
+        "outcome": "completed",
+        "text": "Hello world",
+        "error": null,
+        "usage": {
+          "prompt_tokens": 7,
+          "completion_tokens": 3,
+          "total_tokens": 10
+        },
+        "choices_events": 4
+      },
+      "output": {
+        "generated_text": "Hello world",
+        "success": true,
+        "latency": 1.837499439716339e-05,
+        "output_tokens": 3,
+        "ttft": 9.833020158112049e-06,
+        "itl": [
+          3.5420525819063187e-06,
+          2.749962732195854e-06,
+          2.249958924949169e-06
+        ],
+        "tpot": 0.0,
+        "prompt_len": 7,
+        "error": "",
+        "start_time": 551489.451803625,
+        "client_queue_time": 0.0,
+        "input_audio_duration": 0.0,
+        "num_input_sequences": 1
+      },
+      "failed_checks": [],
+      "status": "conformant"
+    },
+    {
+      "case": "finish_then_error",
+      "layout": "per_event",
+      "wire_hex": [
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22726f6c65223a22617373697374616e74227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a",
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22636f6e74656e74223a2248656c6c6f20776f726c64227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a",
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b7d2c2266696e6973685f726561736f6e223a2273746f70227d5d7d0a0a",
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b5d2c227573616765223a7b2270726f6d70745f746f6b656e73223a372c22636f6d706c6574696f6e5f746f6b656e73223a332c22746f74616c5f746f6b656e73223a31307d7d0a0a",
+        "646174613a207b226572726f72223a7b226d657373616765223a22696e6a65637465642066697874757265206661696c757265222c2274797065223a227365727665725f6572726f72222c22636f6465223a22666978747572655f6572726f72227d7d0a0a",
+        "646174613a205b444f4e455d0a0a"
+      ],
+      "expected": {
+        "outcome": "failed",
+        "text": "Hello world",
+        "error": {
+          "message": "injected fixture failure",
+          "type": "server_error",
+          "code": "fixture_error"
+        },
+        "usage": {
+          "prompt_tokens": 7,
+          "completion_tokens": 3,
+          "total_tokens": 10
+        },
+        "choices_events": 3
+      },
+      "output": {
+        "generated_text": "Hello world",
+        "success": true,
+        "latency": 1.9332976080477238e-05,
+        "output_tokens": 3,
+        "ttft": 8.124974556267262e-06,
+        "itl": [
+          5.832989700138569e-06,
+          5.375011824071407e-06
+        ],
+        "tpot": 0.0,
+        "prompt_len": 7,
+        "error": "",
+        "start_time": 551489.452175583,
+        "client_queue_time": 0.0,
+        "input_audio_duration": 0.0,
+        "num_input_sequences": 1
+      },
+      "failed_checks": [
+        "policy_outcome",
+        "server_error_reason"
+      ],
+      "status": "nonconformant"
+    },
+    {
+      "case": "finish_then_error",
+      "layout": "coalesced",
+      "wire_hex": [
+        "646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22726f6c65223a22617373697374616e74227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b22636f6e74656e74223a2248656c6c6f20776f726c64227d2c2266696e6973685f726561736f6e223a6e756c6c7d5d7d0a0a646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b7b22696e646578223a302c2264656c7461223a7b7d2c2266696e6973685f726561736f6e223a2273746f70227d5d7d0a0a646174613a207b226964223a22666978747572652d63686174222c226f626a656374223a22636861742e636f6d706c6574696f6e2e6368756e6b222c2263726561746564223a302c226d6f64656c223a22666978747572652d6d6f64656c222c2263686f69636573223a5b5d2c227573616765223a7b2270726f6d70745f746f6b656e73223a372c22636f6d706c6574696f6e5f746f6b656e73223a332c22746f74616c5f746f6b656e73223a31307d7d0a0a646174613a207b226572726f72223a7b226d657373616765223a22696e6a65637465642066697874757265206661696c757265222c2274797065223a227365727665725f6572726f72222c22636f6465223a22666978747572655f6572726f72227d7d0a0a646174613a205b444f4e455d0a0a"
+      ],
+      "expected": {
+        "outcome": "failed",
+        "text": "Hello world",
+        "error": {
+          "message": "injected fixture failure",
+          "type": "server_error",
+          "code": "fixture_error"
+        },
+        "usage": {
+          "prompt_tokens": 7,
+          "completion_tokens": 3,
+          "total_tokens": 10
+        },
+        "choices_events": 3
+      },
+      "output": {
+        "generated_text": "Hello world",
+        "success": true,
+        "latency": 1.4874967746436596e-05,
+        "output_tokens": 3,
+        "ttft": 8.833012543618679e-06,
+        "itl": [
+          3.458932042121887e-06,
+          2.5830231606960297e-06
+        ],
+        "tpot": 0.0,
+        "prompt_len": 7,
+        "error": "",
+        "start_time": 551489.452551833,
+        "client_queue_time": 0.0,
+        "input_audio_duration": 0.0,
+        "num_input_sequences": 1
+      },
+      "failed_checks": [
+        "policy_outcome",
+        "server_error_reason"
+      ],
+      "status": "nonconformant"
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "Chat request function only; no native CLI or model execution.",
+    "Fake session is frozen at the original baseline revision.",
+    "Error after finish follows the corpus policy.",
+    "Coalesced reads do not test arbitrary byte fragmentation."
+  ],
+  "source": {
+    "repository": "vllm-project/vllm",
+    "commit": "8352b2427f704652da1910f0d53f3fdcc2fa2b0d",
+    "captured_at": "2026-10-08T03:55:37.197331+00:00",
+    "files": [
+      {
+        "path": "vllm/benchmarks/lib/endpoint_request_func.py",
+        "url": "https://raw.githubusercontent.com/vllm-project/vllm/8352b2427f704652da1910f0d53f3fdcc2fa2b0d/vllm/benchmarks/lib/endpoint_request_func.py",
+        "bytes": 40969,
+        "sha256": "f31fae8c573ecc4bf8e31dae03823502e71404333e8111f4b535432758302b29"
+      },
+      {
+        "path": "tests/benchmarks/test_endpoint_request_func_timing.py",
+        "url": "https://raw.githubusercontent.com/vllm-project/vllm/8352b2427f704652da1910f0d53f3fdcc2fa2b0d/tests/benchmarks/test_endpoint_request_func_timing.py",
+        "bytes": 13676,
+        "sha256": "5c7f92fba418c79029f4e445c566c85ed19dcd0ceaac7d533335e9bcea0bb5e8"
+      },
+      {
+        "path": "LICENSE",
+        "url": "https://raw.githubusercontent.com/vllm-project/vllm/8352b2427f704652da1910f0d53f3fdcc2fa2b0d/LICENSE",
+        "bytes": 11357,
+        "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+      }
+    ]
+  },
+  "helper_source": {
+    "revision": "08567505b09324f891797f4a13c1bd73fc75a827",
+    "directory": "experiments/vllm-regression/evidence/upstream-20261007",
+    "source_sha256": {
+      "tests/benchmarks/test_endpoint_request_func_timing.py": "5c7f92fba418c79029f4e445c566c85ed19dcd0ceaac7d533335e9bcea0bb5e8",
+      "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "vllm/benchmarks/lib/endpoint_request_func.py": "f31fae8c573ecc4bf8e31dae03823502e71404333e8111f4b535432758302b29"
+    }
+  },
+  "summary": {
+    "planned": 14,
+    "attempted": 14,
+    "conformant": 6,
+    "nonconformant": 8,
+    "execution_errors": 0,
+    "false_successes": 6
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "pr_url": "https://github.com/vllm-project/vllm/pull/57519",
+  "state": "open",
+  "merged": false,
+  "head_commit": "1e74a69c71604c3c3ec6cc3cce9dbe8b702bfcda",
+  "upstream_updated_at": "2026-10-07T22:58:10Z",
+  "main_revision": "8352b2427f704652da1910f0d53f3fdcc2fa2b0d",
+  "source_capture_time": "2026-10-08T03:55:37.197331+00:00",
+  "comparison": {
+    "endpoint_bytes_unchanged": true,
+    "timing_tests_bytes_unchanged": true
+  },
+  "adapter_changes": [],
+  "helper_policy": "Original baseline fake-session classes, hash-verified before and after execution."
+}
