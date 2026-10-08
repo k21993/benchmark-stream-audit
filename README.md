@@ -55,12 +55,12 @@ checks strengthen the proposed fix's existing error-message assertion.
 
 ## Replay the pinned sources
 
-To execute the 28 probes again, install the three request-function dependencies
+To execute the 28 probes again, install the locked request-function dependencies
 in a separate environment:
 
 ```sh
 python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements/replay.txt
+.venv/bin/python -m pip install --require-hashes --only-binary=:all: -r requirements/replay.txt
 .venv/bin/python -B scripts/vllm_stream_regression.py replay --output reruns/replay
 ```
 
@@ -73,6 +73,14 @@ CI runs saved-evidence checks without dependencies and executes these pinned
 sources in a separate replay job. Both jobs cover Linux/macOS and Python 3.10/3.14.
 Replay uses fake HTTP sessions, with no model, GPU or external service calls.
 It does not test new upstream revisions or rerun the native CLI.
+Failed CI replays retain `result.json` as an artifact for 14 days when available.
+
+`requirements/replay.in` lists direct dependencies. `requirements/replay.txt`
+locks all dependencies and distribution hashes. To regenerate it with uv:
+
+```sh
+uv pip compile requirements/replay.in --universal --python-version 3.10 --generate-hashes --no-annotate --output-file requirements/replay.txt
+```
 
 Code is in `benchmark_stream_audit/` and `scripts/`. Tests are in `tests/`.
 Saved reports, journals, commands and source snapshots are in `experiments/`.

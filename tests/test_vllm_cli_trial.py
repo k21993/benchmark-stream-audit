@@ -10,7 +10,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
-from urllib.request import Request, urlopen
+from urllib.request import ProxyHandler, Request, build_opener
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -99,6 +99,8 @@ class NativeExportTests(unittest.TestCase):
 class FixtureTests(unittest.TestCase):
     def test_loopback_server_emits_declared_bytes_and_journals_real_requests(self):
         """The fixture must emit and record the exact bytes used by the checks."""
+        # Loopback requests do not need system proxy discovery.
+        opener = build_opener(ProxyHandler({}))
         with tempfile.TemporaryDirectory() as temporary:
             path = Path(temporary) / "journal.jsonl"
             with fixture(path) as base:
@@ -106,7 +108,7 @@ class FixtureTests(unittest.TestCase):
                     body = json.dumps({"messages": [{"role": "user", "content": prompt(case, 0)}]}).encode()
                     req = Request(base + f"/{case}/v1/chat/completions", data=body,
                                   headers={"Content-Type": "application/json", "x-request-id": "0"})
-                    with urlopen(req, timeout=5) as response:
+                    with opener.open(req, timeout=5) as response:
                         stream = response.read().decode()
                     values = [line.removeprefix("data: ") for line in stream.splitlines() if line]
                     parsed = [value if value == "[DONE]" else json.loads(value) for value in values]
